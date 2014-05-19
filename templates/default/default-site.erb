@@ -1,0 +1,12 @@
+server {
+  listen   80;
+  server_name  <%= node['hostname'] %>;
+
+  access_log  <%= node['nginx']['log_dir'] %>/localhost.access.log;
+
+  location / {
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_pass http://<%= node['nginx']['reverseproxy']['destination_ip'] %>:<%= node['nginx']['reverseproxy']['destination_port'] %>;
+  }
+}
