@@ -6,3 +6,4 @@ description      'Installs/Configures nginx-reverse-proxy'
 long_description 'Installs/Configures nginx-reverse-proxy'
 version          '0.1.0'
 
+depends "nginx"

@@ -16,10 +16,16 @@ Please check the opscode nginx cookbook
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['nginx]['reverseproxy']['destinationip']</tt></td>
+    <td><tt>['nginx]['reverseproxy']['destination_ip']</tt></td>
     <td>IP address</td>
     <td>IP address of the backend service that will be behind the proxy</td>
     <td><tt>127.0.0.1</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['nginx]['reverseproxy']['destination_port']</tt></td>
+    <td>Port</td>
+    <td>Port of the backend service that will be behind the proxy</td>
+    <td><tt>8080</tt></td>
   </tr>
 </table>
 
@@ -34,6 +40,20 @@ Include `nginx-reverse-proxy` in your node's `run_list`:
   "run_list": [
     "recipe[nginx-reverse-proxy::default]"
   ]
+}
+```
+If you want to change the default port:
+
+```json
+{
+  "run_list": [
+      "recipe[nginx-reverse-proxy::default]"
+  ],
+  "nginx": {
+      "reverseproxy":{
+        "destination_port": 7990
+      }
+  }
 }
 ```
 
